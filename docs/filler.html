@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABS 18 Kontrakt-ifyllare — Zaragoza AB</title>
+<meta name="description" content="Fyll i dina uppgifter och få ett färdigt ABS 18-konsumentkontrakt, klar att skriva ut eller skicka digitalt. Öppet verktyg av Zaragoza AB.">
+<link rel="canonical" href="https://zaragoza-ab.github.io/ab04-abs18-contract-templates/filler.html">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"WebApplication",
+  "name":"ABS 18 Contract Filler","url":"https://zaragoza-ab.github.io/ab04-abs18-contract-templates/filler.html",
+  "applicationCategory":"BusinessApplication","operatingSystem":"Any (web)",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"SEK"},
+  "author":{"@type":"Organization","name":"Zaragoza AB","url":"https://zaragoza.se","telephone":"+46737245628",
+    "address":{"@type":"PostalAddress","addressLocality":"Helsingborg","addressRegion":"Skåne","addressCountry":"SE"}},
+  "inLanguage":"sv"
+}
+</script>
+
+<style>
+  :root { --bg:#f7f5f1; --fg:#1a1a1a; --accent:#4a3c6b; --muted:#666; --border:#ddd; --card:#fff; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--fg); margin:0; line-height:1.6; }
+  header { background:var(--accent); color:#fff; padding:28px 20px; text-align:center; }
+  header h1 { margin:0 0 6px; font-size:1.6em; }
+  main { max-width:960px; margin:28px auto; padding:0 16px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:800px) { main { grid-template-columns:1fr; } }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+  label { display:block; margin:10px 0 4px; font-weight:600; font-size:0.9em; }
+  input, textarea, select { width:100%; padding:8px 10px; font-size:0.95em; border:1px solid var(--border); border-radius:4px; background:#fff; font-family:inherit; }
+  textarea { min-height:80px; resize:vertical; }
+  section h3 { margin-top:22px; color:var(--accent); border-bottom:1px solid var(--border); padding-bottom:6px; }
+  .output { background:#fdfcfa; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:0.88em; white-space:pre-wrap; padding:18px; border:1px solid var(--border); border-radius:6px; max-height:80vh; overflow-y:auto; }
+  button { background:var(--accent); color:#fff; border:0; padding:10px 18px; font-size:0.95em; border-radius:6px; cursor:pointer; margin:8px 6px 0 0; }
+  .toolbar { margin-bottom:12px; }
+  footer { text-align:center; padding:30px 20px; color:var(--muted); font-size:0.88em; }
+  footer a { color:var(--accent); }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ABS 18 Kontrakt-ifyllare</h1>
+  <p>Fyll i uppgifterna → färdigt kontrakt, redo för underskrift</p>
+</header>
+
+<main>
+  <form class="card" id="form" oninput="render()">
+    <section>
+      <h3>Parter</h3>
+      <label>Konsument (beställare) — namn</label>
+      <input name="customer_name" placeholder="t.ex. Anna Andersson">
+      <div class="grid-2">
+        <div>
+          <label>Personnummer</label>
+          <input name="customer_pnr" placeholder="ÅÅÅÅMMDD-XXXX">
+        </div>
+        <div>
+          <label>Telefon</label>
+          <input name="customer_phone" placeholder="+46 70 123 45 67">
+        </div>
+      </div>
+      <label>Adress (faktureringsadress)</label>
+      <input name="customer_addr" placeholder="Gatuadress, postnummer ort">
+      <label>E-post</label>
+      <input name="customer_email" type="email" placeholder="anna@exempel.se">
+
+      <label style="margin-top:16px">Entreprenör — företagsnamn</label>
+      <input name="contractor_name" value="Zaragoza AB">
+      <div class="grid-2">
+        <div>
+          <label>Organisationsnummer</label>
+          <input name="contractor_org" placeholder="556XXX-XXXX">
+        </div>
+        <div>
+          <label>F-skatt</label>
+          <select name="contractor_fskatt"><option value="Ja">Ja</option><option value="Nej">Nej</option></select>
+        </div>
+      </div>
+      <label>Telefon</label>
+      <input name="contractor_phone" value="+46 73 724 56 28">
+      <label>E-post</label>
+      <input name="contractor_email" value="info@zaragoza.se">
+    </section>
+
+    <section>
+      <h3>Objekt</h3>
+      <label>Fastighetsadress (där arbetet utförs)</label>
+      <input name="site_addr" placeholder="Gatuadress, postnummer ort">
+      <div class="grid-2">
+        <div>
+          <label>Fastighetsbeteckning</label>
+          <input name="site_designation" placeholder="t.ex. Helsingborg Stattena 1:23">
+        </div>
+        <div>
+          <label>Typ</label>
+          <select name="site_type">
+            <option>Villa</option><option>Radhus</option><option>Bostadsrätt</option><option>Fritidshus</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Uppdrag</h3>
+      <label>Beskrivning av arbete</label>
+      <textarea name="scope" placeholder="t.ex. Komplett badrumsrenovering 6 m²: rivning, VVS, tätskikt, kakel..."></textarea>
+      <label>Omfattning (eventuellt ritningar, bilagor)</label>
+      <input name="attachments" placeholder="t.ex. Bilaga 1: ritning; Bilaga 2: materialspec">
+    </section>
+
+    <section>
+      <h3>Tidplan</h3>
+      <div class="grid-2">
+        <div><label>Startdatum</label><input type="date" name="start_date"></div>
+        <div><label>Slutdatum (planerat)</label><input type="date" name="end_date"></div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Ersättning</h3>
+      <div class="grid-2">
+        <div>
+          <label>Form</label>
+          <select name="price_form">
+            <option value="fast">Fastpris</option>
+            <option value="lopande">Löpande räkning</option>
+            <option value="takpris">Takpris</option>
+          </select>
+        </div>
+        <div>
+          <label>Kontraktssumma inkl. moms (SEK)</label>
+          <input type="number" name="contract_sum" placeholder="150000">
+        </div>
+      </div>
+      <label>ROT-avdrag</label>
+      <select name="rot"><option value="Ja">Ja — fakturametoden</option><option value="Nej">Nej</option></select>
+      <label>Betalningsvillkor</label>
+      <input name="payment_terms" value="30% vid kontrakt, 40% vid halvtid, 30% vid slutbesiktning">
+    </section>
+
+    <section>
+      <h3>Övrigt</h3>
+      <label>Garantitid (år)</label>
+      <select name="warranty"><option value="5">5 år (ABS 18 standard)</option><option value="10">10 år (utökad)</option></select>
+      <label>Ansvarsförsäkring</label>
+      <input name="insurance" value="Ja, entreprenörens ansvarsförsäkring täcker egendomsskada och ren förmögenhetsskada enligt ABS 18.">
+      <label>Särskilda villkor</label>
+      <textarea name="special"></textarea>
+    </section>
+  </form>
+
+  <div>
+    <div class="toolbar">
+      <button type="button" onclick="copyOutput()">Kopiera</button>
+      <button type="button" onclick="downloadMd()">Ladda ned .md</button>
+      <button type="button" onclick="printContract()">Skriv ut</button>
+    </div>
+    <div class="output" id="output"></div>
+  </div>
+</main>
+
+<footer>
+  <p>Mall baserad på ABS 18. Juridisk information — ingen juridisk rådgivning. Kontrollera alltid med jurist vid stora projekt.</p>
+  <p>Öppen källkod: <a href="https://github.com/zaragoza-ab/ab04-abs18-contract-templates">github.com/zaragoza-ab/ab04-abs18-contract-templates</a> · CC BY 4.0</p>
+  <p>Maintained by <a href="https://zaragoza.se">Zaragoza AB</a>, Helsingborg · <a href="tel:+46737245628">+46 73 724 56 28</a> · <a href="mailto:info@zaragoza.se">info@zaragoza.se</a></p>
+</footer>
+
+<script>
+function val(name) {
+  const n = document.querySelector(`[name="${name}"]`);
+  return (n && n.value) || `[${name}]`;
+}
+
+function render() {
+  const today = new Date().toISOString().slice(0,10);
+  const tpl = `KONSUMENTENTREPRENAD — ABS 18
+
+Upprättad: ${today}
+Ort: Helsingborg
+
+═══════════════════════════════════════════════════════════════
+
+1. PARTER
+
+Konsument (beställare):
+  Namn:            ${val('customer_name')}
+  Personnummer:    ${val('customer_pnr')}
+  Adress:          ${val('customer_addr')}
+  Telefon:         ${val('customer_phone')}
+  E-post:          ${val('customer_email')}
+
+Entreprenör:
+  Företag:         ${val('contractor_name')}
+  Org.nr:          ${val('contractor_org')}
+  F-skatt:         ${val('contractor_fskatt')}
+  Telefon:         ${val('contractor_phone')}
+  E-post:          ${val('contractor_email')}
+
+═══════════════════════════════════════════════════════════════
+
+2. OBJEKT
+
+  Adress:          ${val('site_addr')}
+  Fastighet:       ${val('site_designation')}
+  Typ:             ${val('site_type')}
+
+═══════════════════════════════════════════════════════════════
+
+3. UPPDRAG
+
+Omfattning:
+${val('scope').split('\n').map(l => '  ' + l).join('\n')}
+
+Bilagor: ${val('attachments')}
+
+═══════════════════════════════════════════════════════════════
+
+4. TIDPLAN
+
+  Start:           ${val('start_date')}
+  Planerat slut:   ${val('end_date')}
+
+Om hinder uppstår utanför entreprenörens kontroll (väder, myndighets-
+beslut, leveransförsening) förlängs tiden skäligen enligt ABS 18 pkt 10.
+
+═══════════════════════════════════════════════════════════════
+
+5. ERSÄTTNING
+
+  Prisform:        ${val('price_form')}
+  Kontraktssumma:  ${val('contract_sum')} SEK inkl. moms
+  ROT-avdrag:      ${val('rot')}
+
+Betalningsvillkor: ${val('payment_terms')}
+
+Betalning enligt ABS 18 pkt 18 (innehållande vid fel) och Konsument-
+tjänstlagen 41 § (rätt att innehålla motsvarande 2× åtgärdskostnad
+om fel visas vid slutbesiktning).
+
+═══════════════════════════════════════════════════════════════
+
+6. ÄNDRINGAR OCH TILLÄGG (ÄTA)
+
+Ändringar av omfattningen hanteras som ÄTA-arbete enligt ABS 18 pkt 7.
+Skriftligt underlag krävs innan ÄTA utförs. Entreprenören ger skriftlig
+pris- och tidkonsekvensbedömning inom skälig tid.
+
+═══════════════════════════════════════════════════════════════
+
+7. GARANTI OCH FELANSVAR
+
+Garantitid: ${val('warranty')} år från godkänd slutbesiktning.
+Inom garantitiden ansvarar entreprenören för fel som inte beror på
+konsumentens normala användning eller slitage (ABS 18 pkt 15).
+
+Efter garantitiden gäller Konsumenttjänstlagens fel-ansvar i upp till
+10 år om felet beror på vårdslöshet.
+
+═══════════════════════════════════════════════════════════════
+
+8. ANSVARSFÖRSÄKRING
+
+${val('insurance')}
+
+═══════════════════════════════════════════════════════════════
+
+9. SLUTBESIKTNING
+
+Slutbesiktning utförs av opartisk besiktningsman, kostnad delas
+mellan parterna. Vid godkänd slutbesiktning övergår risken för
+entreprenaden till konsumenten (ABS 18 pkt 14–15).
+
+═══════════════════════════════════════════════════════════════
+
+10. PERSONALLIGGARE OCH ID06
+
+Entreprenören ansvarar för att personalliggare förs (Skatteverkets
+regler) och att alla arbetande har ID06-bricka.
+
+═══════════════════════════════════════════════════════════════
+
+11. TVISTELÖSNING
+
+Eventuella tvister ska i första hand lösas genom förhandling.
+Om förhandling misslyckas hänskjuts tvisten till Allmänna
+reklamationsnämnden (ARN) eller, vid tvistbelopp över 29 400 SEK
+(2026), till tingsrätten i Helsingborgs domsaga.
+
+═══════════════════════════════════════════════════════════════
+
+12. SÄRSKILDA VILLKOR
+
+${val('special') || '(inga)'}
+
+═══════════════════════════════════════════════════════════════
+
+UNDERSKRIFTER
+
+${today}, Helsingborg
+
+
+________________________________        ________________________________
+${val('customer_name')}                  ${val('contractor_name')}
+(Konsument)                              (Entreprenör)
+
+
+Detta kontrakt hänvisar till ABS 18 — Allmänna bestämmelser för
+småhusentreprenader mellan näringsidkare och konsument.
+`;
+  document.getElementById('output').textContent = tpl;
+  return tpl;
+}
+
+function copyOutput() {
+  navigator.clipboard.writeText(document.getElementById('output').textContent).then(() => {
+    alert('Kontrakt kopierat till urklipp.');
+  });
+}
+
+function downloadMd() {
+  const blob = new Blob([document.getElementById('output').textContent], { type: 'text/markdown' });
+  const name = (val('customer_name') || 'kontrakt').replace(/[^a-zA-ZåäöÅÄÖ0-9]/g,'-');
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `ABS18-kontrakt-${name}.md`; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function printContract() { window.print(); }
+
+render();
+</script>
+
+</body>
+</html>

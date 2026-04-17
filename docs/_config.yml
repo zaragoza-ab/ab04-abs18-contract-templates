@@ -1,0 +1,12 @@
+title: "AB04 / ABS18 Contract Templates"
+description: "Standard construction contract templates (ABS 18, AB 04, ABT 06)"
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+url: "https://zaragoza-ab.github.io"
+baseurl: "/ab04-abs18-contract-templates"
+author:
+  name: "Zaragoza AB"
+  email: "info@zaragoza.se"
+  url: "https://zaragoza.se"
